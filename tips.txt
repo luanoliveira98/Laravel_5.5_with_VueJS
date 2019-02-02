@@ -1,0 +1,23 @@
+Laravel: 
+https://laravel.com/docs/5.5
+
+Command:
+    init: composer create-project --prefer-dist laravel/laravel blog "5.5.*"
+
+    login: php artisan make:auth
+
+    migrations: php artisan migrate
+
+AdminLTE:
+    https://adminlte.io/themes/AdminLTE/index.html
+
+laravel-5.5-pt-BR-localization:
+    https://github.com/enniosousa/laravel-5.5-pt-BR-localization
+
+    obs: You can remove the directory .git for include and version the files of this project on your repository:
+
+    rm -rf pt-BR/.git/
+
+    Framework configuration for use Default language:
+    // Line 81 from file config/app.php
+    'locale' => 'pt-BR',
