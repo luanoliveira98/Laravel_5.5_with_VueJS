@@ -3,6 +3,7 @@
 @section('content')
     <page-component size="10">
         <panel-component title="Dashboard">
+            <crumbs-component v-bind:list="{{$listCrumbs}}"></crumbs-component>
             <div class="row">
                 <div class="col-md-4">
                     <box-component quantify="80" title="Articles" url="{{route('articles.index')}}" color="orange" icon="ion ion-pie-graph">

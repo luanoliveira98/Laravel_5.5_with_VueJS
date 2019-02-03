@@ -3,6 +3,7 @@
 @section('content')
     <page-component size="12">
         <panel-component title="Articles List">
+            <crumbs-component v-bind:list="{{$listCrumbs}}"></crumbs-component>
             <table-list-component 
                 v-bind:titles="['#','Title', 'Description']"
                 v-bind:items="[[1, 'PHP OO', 'PHP OO Course'],[2, 'Vue JS', 'Vue JS Course']]"
