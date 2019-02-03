@@ -16,7 +16,7 @@ class ArticlesController extends Controller
     {
         $listCrumbs = json_encode([
             ["title"=>"Home", "url"=>route('home')],
-            ["title"=>"Shopping List", "url"=>""]
+            ["title"=>"Articles List", "url"=>""]
         ]);
         return view('admin.articles.index', compact('listCrumbs'));
     }
