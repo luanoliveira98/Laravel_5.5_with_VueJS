@@ -2,6 +2,18 @@
 
 @section('content')
     <page-component size="12">
+
+        @if($errors->all())
+            <div class="alert alert-danger alert-dismissible text-center" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                @foreach ($errors->all() as $key => $value)
+                <li><strong>{{$value}}</strong></li>
+                @endforeach
+            </div>
+        @endif
+
         <panel-component title="Articles List">
             <crumbs-component v-bind:list="{{$listCrumbs}}"></crumbs-component>
             <table-list-component 
@@ -18,19 +30,19 @@
         <form-component id="formAdd" css="" action="{{route('articles.store')}}" method="post" enctype="multipart/form-data" token="{{ csrf_token() }}">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" name="title" id="title" class="form-control" placeholder="Title">
+                <input type="text" name="title" id="title" class="form-control" placeholder="Title" value="{{old('title')}}">
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <input type="text" name="description" id="description" class="form-control" placeholder="Description">
+                <input type="text" name="description" id="description" class="form-control" placeholder="Description" value="{{old('description')}}">
             </div>
             <div class="form-group">
                 <label for="content">Content</label>
-                <textarea name="content" id="content" class="form-control"></textarea>
+                <textarea name="content" id="content" class="form-control">{{old('content')}}</textarea>
             </div>
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="datetime-local" name="date" id="date" class="form-control">
+                <input type="datetime-local" name="date" id="date" class="form-control" value="{{old('date')}}">
             </div>
         </form-component>
         <span slot="buttons">

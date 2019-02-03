@@ -42,8 +42,20 @@ class ArticlesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         $data = $request->all();
+        $validation = \Validator::make($data,[
+            "title"         => "required",
+            "description"   => "required",
+            "content"       => "required",
+            "date"          => "required"
+        ]);
+
+        if($validation->fails()){
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+
+        
         Article::create($data);
         return redirect()->back();
     }
