@@ -9,9 +9,7 @@
 
                     <div class="row">
                         <div class="col-md-4">
-                            <panel-component title="Content 1" color="blue">
-                                Content test...
-                            </panel-component>
+                            <box-component></box-component>
                         </div>
                         
                         <div class="col-md-4">
