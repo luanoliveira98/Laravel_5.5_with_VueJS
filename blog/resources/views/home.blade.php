@@ -5,7 +5,7 @@
         <panel-component title="Dashboard">
             <div class="row">
                 <div class="col-md-4">
-                    <box-component quantify="80" title="Articles" url="#teste" color="orange" icon="ion ion-pie-graph">
+                    <box-component quantify="80" title="Articles" url="{{route('articles.index')}}" color="orange" icon="ion ion-pie-graph">
 
                     </box-component>
                 </div>
