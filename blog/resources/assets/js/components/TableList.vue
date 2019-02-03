@@ -10,45 +10,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Title...</td>
-                    <td>Description...</td>
-                    <td>Author...</td>
-                    <td>Date...</td>
-                    <td>
-                        <a href="#">Edit</a> | 
-                        <a href="#">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Title...</td>
-                    <td>Description...</td>
-                    <td>Author...</td>
-                    <td>Date...</td>
-                    <td>
-                        <a href="#">Edit</a> | 
-                        <a href="#">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Title...</td>
-                    <td>Description...</td>
-                    <td>Author...</td>
-                    <td>Date...</td>
-                    <td>
-                        <a href="#">Edit</a> | 
-                        <a href="#">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Title...</td>
-                    <td>Description...</td>
-                    <td>Author...</td>
-                    <td>Date...</td>
+                <tr v-for="item in itens">
+                    <td v-for="i in item">{{i}}</td>
                     <td>
                         <a href="#">Edit</a> | 
                         <a href="#">Delete</a>
@@ -61,6 +24,6 @@
 
 <script>
     export default {
-        props:['titles']
+        props:['titles', 'itens']
     }
 </script>
