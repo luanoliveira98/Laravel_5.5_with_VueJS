@@ -20,7 +20,7 @@
                 <tr v-for="(item, index) in list" :key="item.index">
                     <td v-for="i in item" :key="i.index">{{i}}</td>
                     <td v-if="detail || edit || deleted">
-                        <form v-bind:id="index" v-if="deleted && token" v-bind:action="deleted" method="post">
+                        <form v-bind:id="index" v-if="deleted && token" v-bind:action="deleted + item.id" method="post">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" v-bind:value="token">
 

@@ -44575,7 +44575,7 @@ var render = function() {
                           {
                             attrs: {
                               id: index,
-                              action: _vm.deleted,
+                              action: _vm.deleted + item.id,
                               method: "post"
                             }
                           },

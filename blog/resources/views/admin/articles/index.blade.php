@@ -20,7 +20,7 @@
                 v-bind:titles="['#','Title', 'Description', 'Date']"
                 v-bind:items="{{$listArticles}}"
                 order ="asc" orderCol="1"
-                create="#create"  detail="/admin/articles/" edit="/admin/articles/" deleted="#deleted" token="7878797987"
+                create="#create"  detail="/admin/articles/" edit="/admin/articles/" deleted="/admin/articles/" token="{{ csrf_token() }}"
                 modal="yes"
             ></table-list-component>
         </panel-component>
