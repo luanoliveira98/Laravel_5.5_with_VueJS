@@ -81,6 +81,7 @@
         computed:{
             list: function(){
 
+                let list = this.items.data;
                 let order    = this.orderAux;
                 let orderCol = this.orderAuxCol;
 
@@ -88,7 +89,7 @@
                 orderCol = parseInt(orderCol);
 
                 if(order == 'asc'){
-                    this.items.sort(function(a,b){
+                    list.sort(function(a,b){
                         if (Object.values(a)[orderCol] > Object.values(b)[orderCol]){
                             return 1;
                         } else if (Object.values(a)[orderCol] < Object.values(b)[orderCol]){
@@ -98,7 +99,7 @@
                         }
                     });
                 } else {
-                    this.items.sort(function(a,b){
+                    list.sort(function(a,b){
                         if (Object.values(a)[orderCol] < Object.values(b)[orderCol]){
                             return 1;
                         } else if (Object.values(a)[orderCol] > Object.values(b)[orderCol]){
@@ -110,7 +111,7 @@
                 }
 
                 if (this.search){
-                    return this.items.filter(res => {
+                    return list.filter(res => {
                         res = Object.values(res);
                         for(let k = 0; k<res.length; k++){
                             if((res[k]+ "").toLowerCase().indexOf(this.search.toLowerCase()) >= 0){
@@ -121,7 +122,7 @@
                     });
                 }
 
-                return this.items;
+                return list;
             }
         }
     }

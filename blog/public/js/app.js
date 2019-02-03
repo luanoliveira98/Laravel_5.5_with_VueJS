@@ -44432,6 +44432,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         list: function list() {
             var _this = this;
 
+            var list = this.items.data;
             var order = this.orderAux;
             var orderCol = this.orderAuxCol;
 
@@ -44439,7 +44440,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             orderCol = parseInt(orderCol);
 
             if (order == 'asc') {
-                this.items.sort(function (a, b) {
+                list.sort(function (a, b) {
                     if (Object.values(a)[orderCol] > Object.values(b)[orderCol]) {
                         return 1;
                     } else if (Object.values(a)[orderCol] < Object.values(b)[orderCol]) {
@@ -44449,7 +44450,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 });
             } else {
-                this.items.sort(function (a, b) {
+                list.sort(function (a, b) {
                     if (Object.values(a)[orderCol] < Object.values(b)[orderCol]) {
                         return 1;
                     } else if (Object.values(a)[orderCol] > Object.values(b)[orderCol]) {
@@ -44461,7 +44462,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             if (this.search) {
-                return this.items.filter(function (res) {
+                return list.filter(function (res) {
                     res = Object.values(res);
                     for (var k = 0; k < res.length; k++) {
                         if ((res[k] + "").toLowerCase().indexOf(_this.search.toLowerCase()) >= 0) {
@@ -44472,7 +44473,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             }
 
-            return this.items;
+            return list;
         }
     }
 });

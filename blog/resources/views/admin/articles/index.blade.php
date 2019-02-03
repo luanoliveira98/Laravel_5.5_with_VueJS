@@ -18,11 +18,14 @@
             <crumbs-component v-bind:list="{{$listCrumbs}}"></crumbs-component>
             <table-list-component 
                 v-bind:titles="['#','Title', 'Description', 'Date']"
-                v-bind:items="{{$listArticles}}"
+                v-bind:items="{{json_encode($listArticles)}}"
                 order ="asc" orderCol="1"
                 create="#create"  detail="/admin/articles/" edit="/admin/articles/" deleted="/admin/articles/" token="{{ csrf_token() }}"
                 modal="yes"
             ></table-list-component>
+            <div align="center">
+                {{$listArticles}}
+            </div>
         </panel-component>
     </page-component>
 
