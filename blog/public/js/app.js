@@ -44371,20 +44371,58 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['titles', 'items', 'create', 'detail', 'edit', 'deleted', 'token'],
+    props: ['titles', 'items', 'order', 'orderCol', 'create', 'detail', 'edit', 'deleted', 'token'],
     data: function data() {
         return {
-            search: ''
+            search: '',
+            orderAux: this.order || "asc",
+            orderAuxCol: this.orderCol || 0
         };
     },
     methods: {
         executeForm: function executeForm(index) {
             document.getElementById(index).submit();
+        },
+        orderColumn: function orderColumn(column) {
+            this.orderAuxCol = column;
+            if (this.orderAux.toLowerCase() == "asc") {
+                this.orderAux = "desc";
+            } else {
+                this.orderAux = "asc";
+            }
         }
     },
     computed: {
         list: function list() {
             var _this = this;
+
+            var order = this.orderAux;
+            var orderCol = this.orderAuxCol;
+
+            order = order.toLowerCase();
+            orderCol = parseInt(orderCol);
+
+            if (order == 'asc') {
+                this.items.sort(function (a, b) {
+                    if (a[orderCol] > b[orderCol]) {
+                        return 1;
+                    } else if (a[orderCol] < b[orderCol]) {
+                        return -1;
+                    } else {
+                        return 0;
+                    }
+                });
+            } else {
+                this.items.sort(function (a, b) {
+                    if (a[orderCol] < b[orderCol]) {
+                        return 1;
+                    } else if (a[orderCol] > b[orderCol]) {
+                        return -1;
+                    } else {
+                        return 0;
+                    }
+                });
+            }
 
             return this.items.filter(function (res) {
                 for (var k = 0; k < res.length; k++) {
@@ -44444,8 +44482,19 @@ var render = function() {
         _c(
           "tr",
           [
-            _vm._l(_vm.titles, function(title) {
-              return _c("th", [_vm._v(_vm._s(title))])
+            _vm._l(_vm.titles, function(title, index) {
+              return _c(
+                "th",
+                {
+                  staticStyle: { cursor: "pointer" },
+                  on: {
+                    click: function($event) {
+                      _vm.orderColumn(index)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(title))]
+              )
             }),
             _vm._v(" "),
             _vm.detail || _vm.edit || _vm.deleted
@@ -44494,13 +44543,13 @@ var render = function() {
                             _vm._v(" "),
                             _vm.detail
                               ? _c("a", { attrs: { href: _vm.detail } }, [
-                                  _vm._v("Detail | ")
+                                  _vm._v("| Detail ")
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
                             _vm.edit
                               ? _c("a", { attrs: { href: _vm.edit } }, [
-                                  _vm._v("Edit | ")
+                                  _vm._v("| Edit")
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
@@ -44513,7 +44562,7 @@ var render = function() {
                                   }
                                 }
                               },
-                              [_vm._v("Delete")]
+                              [_vm._v("| Delete |")]
                             )
                           ]
                         )
@@ -44523,18 +44572,20 @@ var render = function() {
                       ? _c("span", [
                           _vm.detail
                             ? _c("a", { attrs: { href: _vm.detail } }, [
-                                _vm._v("Detail | ")
+                                _vm._v("| Detail ")
                               ])
                             : _vm._e(),
                           _vm._v(" "),
                           _vm.edit
                             ? _c("a", { attrs: { href: _vm.edit } }, [
-                                _vm._v("Edit | ")
+                                _vm._v("| Edit ")
                               ])
                             : _vm._e(),
                           _vm._v(" "),
                           _vm.deleted
-                            ? _c("a", { attrs: { href: _vm.deleted } })
+                            ? _c("a", { attrs: { href: _vm.deleted } }, [
+                                _vm._v("| Delete |")
+                              ])
                             : _vm._e()
                         ])
                       : _vm._e(),
@@ -44543,13 +44594,13 @@ var render = function() {
                       ? _c("span", [
                           _vm.detail
                             ? _c("a", { attrs: { href: _vm.detail } }, [
-                                _vm._v("Detail | ")
+                                _vm._v("| Detail ")
                               ])
                             : _vm._e(),
                           _vm._v(" "),
                           _vm.edit
                             ? _c("a", { attrs: { href: _vm.edit } }, [
-                                _vm._v("Edit")
+                                _vm._v("| Edit |")
                               ])
                             : _vm._e()
                         ])

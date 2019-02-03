@@ -11,29 +11,29 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th v-for="title in titles">{{title}}</th>
+                    <th style="cursor: pointer" v-for="(title, index) in titles" v-on:click="orderColumn(index)">{{title}}</th>
                     <th v-if="detail || edit || deleted">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item, index in list">
+                <tr v-for="(item, index) in list">
                     <td v-for="i in item">{{i}}</td>
                     <td v-if="detail || edit || deleted">
                         <form v-bind:id="index" v-if="deleted && token" v-bind:action="deleted" method="post">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" v-bind:value="token">
-                            <a v-if="detail" v-bind:href="detail">Detail | </a>
-                            <a v-if="edit" v-bind:href="edit">Edit | </a> 
-                            <a v-on:click="executeForm(index)">Delete</a>
+                            <a v-if="detail" v-bind:href="detail">| Detail </a>
+                            <a v-if="edit" v-bind:href="edit">| Edit</a> 
+                            <a v-on:click="executeForm(index)">| Delete |</a>
                         </form>
                         <span v-if="!token">
-                            <a v-if="detail" v-bind:href="detail">Detail | </a>
-                            <a v-if="edit" v-bind:href="edit">Edit | </a> 
-                            <a v-if="deleted" v-bind:href="deleted"></a>
+                            <a v-if="detail" v-bind:href="detail">| Detail </a>
+                            <a v-if="edit" v-bind:href="edit">| Edit </a> 
+                            <a v-if="deleted" v-bind:href="deleted">| Delete |</a>
                         </span>
                         <span v-if="token && !deleted">
-                            <a v-if="detail" v-bind:href="detail">Detail | </a>
-                            <a v-if="edit" v-bind:href="edit">Edit</a>
+                            <a v-if="detail" v-bind:href="detail">| Detail </a>
+                            <a v-if="edit" v-bind:href="edit">| Edit |</a> 
                         </span>
                     </td>
                 </tr>
@@ -44,19 +44,58 @@
 
 <script>
     export default {
-        props:['titles', 'items', 'create', 'detail', 'edit', 'deleted', 'token'],
+        props:['titles', 'items', 'order', 'orderCol', 'create', 'detail', 'edit', 'deleted', 'token'],
         data: function(){
             return {
-                search: ''
+                search: '',
+                orderAux: this.order || "asc",
+                orderAuxCol: this.orderCol || 0
             }
         },
         methods:{
             executeForm: function(index){
                 document.getElementById(index).submit();
+            },
+            orderColumn: function(column){
+                this.orderAuxCol = column;
+                if(this.orderAux.toLowerCase() == "asc"){
+                    this.orderAux = "desc";
+                } else {
+                    this.orderAux = "asc";
+                }
             }
         },
         computed:{
             list: function(){
+
+                let order    = this.orderAux;
+                let orderCol = this.orderAuxCol;
+
+                order = order.toLowerCase();
+                orderCol = parseInt(orderCol);
+
+                if(order == 'asc'){
+                    this.items.sort(function(a,b){
+                        if (a[orderCol] > b[orderCol]){
+                            return 1;
+                        } else if (a[orderCol] < b[orderCol]){
+                            return -1;
+                        } else {
+                            return 0;
+                        }
+                    });
+                } else {
+                    this.items.sort(function(a,b){
+                        if (a[orderCol] < b[orderCol]){
+                            return 1;
+                        } else if (a[orderCol] > b[orderCol]){
+                            return -1;
+                        } else {
+                            return 0;
+                        }
+                    });
+                }
+
                 return this.items.filter(res => {
                     for(let k = 0; k<res.length; k++){
                         if((res[k]+ "").toLowerCase().indexOf(this.search.toLowerCase()) >= 0){
