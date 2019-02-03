@@ -44363,12 +44363,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['titles', 'itens', 'create', 'detail', 'edit', 'deleted', 'token'],
+    props: ['titles', 'items', 'create', 'detail', 'edit', 'deleted', 'token'],
+    data: function data() {
+        return {
+            search: ''
+        };
+    },
     methods: {
         executeForm: function executeForm(index) {
             document.getElementById(index).submit();
+        }
+    },
+    computed: {
+        list: function list() {
+            var _this = this;
+
+            return this.items.filter(function (res) {
+                for (var k = 0; k < res.length; k++) {
+                    if ((res[k] + "").toLowerCase().indexOf(_this.search.toLowerCase()) >= 0) {
+                        return true;
+                    }
+                }
+                return false;
+            });
+
+            return this.items;
         }
     }
 });
@@ -44382,9 +44409,35 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.create
-      ? _c("a", { attrs: { href: _vm.create } }, [_vm._v("Create")])
-      : _vm._e(),
+    _c("div", { staticClass: "form-inline" }, [
+      _vm.create
+        ? _c("a", { attrs: { href: _vm.create } }, [_vm._v("Create")])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group pull-right" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.search,
+              expression: "search"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "search", placeholder: "Search" },
+          domProps: { value: _vm.search },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.search = $event.target.value
+            }
+          }
+        })
+      ])
+    ]),
     _vm._v(" "),
     _c("table", { staticClass: "table table-striped table-hover" }, [
       _c("thead", [
@@ -44405,7 +44458,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "tbody",
-        _vm._l(_vm.itens, function(item, index) {
+        _vm._l(_vm.list, function(item, index) {
           return _c(
             "tr",
             [
