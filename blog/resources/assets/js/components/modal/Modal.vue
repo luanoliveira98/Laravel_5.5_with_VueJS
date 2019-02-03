@@ -1,8 +1,18 @@
 <template>
-    <div v-bind:id="name" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" v-bind:aria-labelledby="name">
-        <div class="modal-dialog modal-lg" role="document">
+    <div class="modal fade" v-bind:id="name" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <slot></slot>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <slot></slot>
+                </div>
+                <div class="modal-footer">
+                    <slot name="buttons"></slot>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
@@ -10,6 +20,6 @@
 
 <script>
     export default {
-        props: ['name']
+        props: ['name', 'title']
     }
 </script>

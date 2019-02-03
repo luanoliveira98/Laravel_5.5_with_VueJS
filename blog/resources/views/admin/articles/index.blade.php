@@ -14,41 +14,39 @@
         </panel-component>
     </page-component>
 
-    <modal-component name="add">
-        <panel-component title="Add">
-            <form-component css="" action="#" method="delete" enctype="multipart/form-data" token="123123">
-                <div class="form-group">
-                  <label for="title">Title</label>
-                  <input type="text" name="title" id="title" class="form-control" placeholder="Title">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <input type="text" name="description" id="description" class="form-control" placeholder="Description">
-                </div>
-                <button class="btn btn-info">Add</button>
-            </form-component>
-        </panel-component>
+    <modal-component name="add" title="Add">
+        <form-component id="formAdd" css="" action="#" method="delete" enctype="multipart/form-data" token="123123">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" class="form-control" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description" class="form-control" placeholder="Description">
+            </div>
+        </form-component>
+        <span slot="buttons">
+            <button class="btn btn-info" form="formAdd">Add</button>
+        </span>
     </modal-component>
     
-    <modal-component name="detail">
-        <panel-component v-bind:title="$store.state.item.title">
-            <p>@{{$store.state.item.description}}</p>
-        </panel-component>
+    <modal-component name="edit" title="Edit">
+        <form-component id="formEdit" css="" action="#" method="put" enctype="multipart/form-data" token="123123">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" v-model="$store.state.item.title" class="form-control" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description" v-model="$store.state.item.description"  class="form-control" placeholder="Description">
+            </div>
+        </form-component>
+        <span slot="buttons">
+            <button class="btn btn-info" form="formEdit">Edit</button>
+        </span>
     </modal-component>
     
-    <modal-component name="edit">
-        <panel-component title="Edit">
-            <form-component css="" action="#" method="delete" enctype="multipart/form-data" token="123123">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title" v-model="$store.state.item.title" class="form-control" placeholder="Title">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <input type="text" name="description" id="description" v-model="$store.state.item.description"  class="form-control" placeholder="Description">
-                </div>
-                <button class="btn btn-info">Edit</button>
-            </form-component>
-        </panel-component>
+    <modal-component name="detail" v-bind:title="$store.state.item.title">
+        <p>@{{$store.state.item.description}}</p>
     </modal-component>
 @endsection

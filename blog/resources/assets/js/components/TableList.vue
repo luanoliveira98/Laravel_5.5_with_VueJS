@@ -111,6 +111,7 @@
 
                 if (this.search){
                     return this.items.filter(res => {
+                        res = Object.values(res);
                         for(let k = 0; k<res.length; k++){
                             if((res[k]+ "").toLowerCase().indexOf(this.search.toLowerCase()) >= 0){
                                 return true;
