@@ -9,20 +9,20 @@
 
                     <div class="row">
                         <div class="col-md-4">
-                            <panel-component title="Content 1">
+                            <panel-component title="Content 1" color="blue">
                                 Content test...
                             </panel-component>
                         </div>
                         
                         <div class="col-md-4">
-                            <panel-component title="Content 2">
+                            <panel-component title="Content 2" color="orange">
                                 Content test...
                             </panel-component>
                         </div>
 
                             
                         <div class="col-md-4">
-                            <panel-component title="Content 3">
+                            <panel-component title="Content 3" color="panel-info">
                                 Content test...
                             </panel-component>
                         </div>
