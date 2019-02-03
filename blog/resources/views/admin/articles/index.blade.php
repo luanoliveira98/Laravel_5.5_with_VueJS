@@ -20,14 +20,14 @@
                 v-bind:titles="['#','Title', 'Description', 'Date']"
                 v-bind:items="{{$listArticles}}"
                 order ="asc" orderCol="1"
-                create="#create"  detail="/admin/articles/" edit="#edit" deleted="#deleted" token="7878797987"
+                create="#create"  detail="/admin/articles/" edit="/admin/articles/" deleted="#deleted" token="7878797987"
                 modal="yes"
             ></table-list-component>
         </panel-component>
     </page-component>
 
     <modal-component name="add" title="Add">
-        <form-component id="formAdd" css="" action="{{route('articles.store')}}" method="post" enctype="multipart/form-data" token="{{ csrf_token() }}">
+        <form-component id="formAdd" css="" action="{{route('articles.store')}}" method="post" enctype="" token="{{ csrf_token() }}">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title" class="form-control" placeholder="Title" value="{{old('title')}}">
@@ -51,7 +51,7 @@
     </modal-component>
     
     <modal-component name="edit" title="Edit">
-        <form-component id="formEdit" css="" action="#" method="put" enctype="multipart/form-data" token="123123">
+        <form-component id="formEdit" css="" v-bind:action="'/admin/articles/'+$store.state.item.id" method="put" enctype="" token="{{ csrf_token() }}">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title" v-model="$store.state.item.title" class="form-control" placeholder="Title">
@@ -59,6 +59,14 @@
             <div class="form-group">
                 <label for="description">Description</label>
                 <input type="text" name="description" id="description" v-model="$store.state.item.description"  class="form-control" placeholder="Description">
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea name="content" id="content" class="form-control" v-model="$store.state.item.content"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="datetime-local" name="date" id="date" class="form-control" v-model="$store.state.item.date">
             </div>
         </form-component>
         <span slot="buttons">
