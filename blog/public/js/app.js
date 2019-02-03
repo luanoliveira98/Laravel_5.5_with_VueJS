@@ -44354,9 +44354,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['titles', 'itens', 'create', 'detail', 'edit', 'deleted', 'token']
+    props: ['titles', 'itens', 'create', 'detail', 'edit', 'deleted', 'token'],
+    methods: {
+        executeForm: function executeForm(index) {
+            document.getElementById(index).submit();
+        }
+    }
 });
 
 /***/ }),
@@ -44391,7 +44405,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "tbody",
-        _vm._l(_vm.itens, function(item) {
+        _vm._l(_vm.itens, function(item, index) {
           return _c(
             "tr",
             [
@@ -44402,20 +44416,58 @@ var render = function() {
               _vm.detail || _vm.edit || _vm.deleted
                 ? _c("td", [
                     _vm.deleted && _vm.token
-                      ? _c("form", { attrs: { action: "", method: "post" } }, [
-                          _c("input", {
+                      ? _c(
+                          "form",
+                          {
                             attrs: {
-                              type: "hidden",
-                              name: "_method",
-                              value: "DELETE"
+                              id: index,
+                              action: _vm.deleted,
+                              method: "post"
                             }
-                          }),
-                          _vm._v(" "),
-                          _c("input", {
-                            attrs: { type: "hidden", name: "_token" },
-                            domProps: { value: _vm.token }
-                          }),
-                          _vm._v(" "),
+                          },
+                          [
+                            _c("input", {
+                              attrs: {
+                                type: "hidden",
+                                name: "_method",
+                                value: "DELETE"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              attrs: { type: "hidden", name: "_token" },
+                              domProps: { value: _vm.token }
+                            }),
+                            _vm._v(" "),
+                            _vm.detail
+                              ? _c("a", { attrs: { href: _vm.detail } }, [
+                                  _vm._v("Detail | ")
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.edit
+                              ? _c("a", { attrs: { href: _vm.edit } }, [
+                                  _vm._v("Edit | ")
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    _vm.executeForm(index)
+                                  }
+                                }
+                              },
+                              [_vm._v("Delete")]
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.token
+                      ? _c("span", [
                           _vm.detail
                             ? _c("a", { attrs: { href: _vm.detail } }, [
                                 _vm._v("Detail | ")
@@ -44429,8 +44481,22 @@ var render = function() {
                             : _vm._e(),
                           _vm._v(" "),
                           _vm.deleted
-                            ? _c("a", { attrs: { href: _vm.deleted } }, [
-                                _vm._v("Delete")
+                            ? _c("a", { attrs: { href: _vm.deleted } })
+                            : _vm._e()
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.token && !_vm.deleted
+                      ? _c("span", [
+                          _vm.detail
+                            ? _c("a", { attrs: { href: _vm.detail } }, [
+                                _vm._v("Detail | ")
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.edit
+                            ? _c("a", { attrs: { href: _vm.edit } }, [
+                                _vm._v("Edit")
                               ])
                             : _vm._e()
                         ])
