@@ -42,5 +42,8 @@ Vue.component('form-component', require('./components/Form.vue'));
 
 const app = new Vue({
     el: '#app',
-    store
+    store,
+    mounted: function(){
+        document.getElementById('app').style.display = "block";
+    }
 });

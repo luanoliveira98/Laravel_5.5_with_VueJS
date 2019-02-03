@@ -5,7 +5,7 @@
         <panel-component title="Articles List">
             <crumbs-component v-bind:list="{{$listCrumbs}}"></crumbs-component>
             <table-list-component 
-                v-bind:titles="['#','Title', 'Description']"
+                v-bind:titles="['#','Title', 'Description', 'Date']"
                 v-bind:items="{{$listArticles}}"
                 order ="asc" orderCol="1"
                 create="#create"  detail="#detail" edit="#edit" deleted="#deleted" token="7878797987"
@@ -15,7 +15,7 @@
     </page-component>
 
     <modal-component name="add" title="Add">
-        <form-component id="formAdd" css="" action="#" method="delete" enctype="multipart/form-data" token="123123">
+        <form-component id="formAdd" css="" action="{{route('articles.store')}}" method="post" enctype="multipart/form-data" token="{{ csrf_token() }}">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title" class="form-control" placeholder="Title">
@@ -23,6 +23,14 @@
             <div class="form-group">
                 <label for="description">Description</label>
                 <input type="text" name="description" id="description" class="form-control" placeholder="Description">
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea name="content" id="content" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="datetime-local" name="date" id="date" class="form-control">
             </div>
         </form-component>
         <span slot="buttons">
