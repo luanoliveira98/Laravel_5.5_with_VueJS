@@ -44393,6 +44393,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['titles', 'items', 'order', 'orderCol', 'create', 'detail', 'edit', 'deleted', 'token', 'modal'],
@@ -44580,10 +44589,22 @@ var render = function() {
                               domProps: { value: _vm.token }
                             }),
                             _vm._v(" "),
-                            _vm.detail
+                            _vm.detail && !_vm.modal
                               ? _c("a", { attrs: { href: _vm.detail } }, [
                                   _vm._v("| Detail ")
                                 ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.detail && _vm.modal
+                              ? _c("modal-link-component", {
+                                  attrs: {
+                                    item: item,
+                                    type: "link",
+                                    name: "detail",
+                                    title: "| Detail",
+                                    css: ""
+                                  }
+                                })
                               : _vm._e(),
                             _vm._v(" "),
                             _vm.edit && !_vm.modal
@@ -44624,10 +44645,22 @@ var render = function() {
                       ? _c(
                           "span",
                           [
-                            _vm.detail
+                            _vm.detail && !_vm.modal
                               ? _c("a", { attrs: { href: _vm.detail } }, [
                                   _vm._v("| Detail ")
                                 ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.detail && _vm.modal
+                              ? _c("modal-link-component", {
+                                  attrs: {
+                                    item: item,
+                                    type: "link",
+                                    name: "detail",
+                                    title: "| Detail",
+                                    css: ""
+                                  }
+                                })
                               : _vm._e(),
                             _vm._v(" "),
                             _vm.edit && !_vm.modal
@@ -44662,10 +44695,22 @@ var render = function() {
                       ? _c(
                           "span",
                           [
-                            _vm.detail
+                            _vm.detail && !_vm.modal
                               ? _c("a", { attrs: { href: _vm.detail } }, [
                                   _vm._v("| Detail ")
                                 ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.detail && _vm.modal
+                              ? _c("modal-link-component", {
+                                  attrs: {
+                                    item: item,
+                                    type: "link",
+                                    name: "detail",
+                                    title: "| Detail",
+                                    css: ""
+                                  }
+                                })
                               : _vm._e(),
                             _vm._v(" "),
                             _vm.edit && !_vm.modal
