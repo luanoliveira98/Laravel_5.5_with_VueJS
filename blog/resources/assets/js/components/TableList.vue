@@ -3,7 +3,8 @@
         
 
         <div class="form-inline">
-            <a v-if="create" v-bind:href="create">Create</a>
+            <a v-if="create && !modal" v-bind:href="create">Create</a>
+            <modal-link-component v-if="create && modal" type="link" name="add" title="Create" css=""></modal-link-component>
             <div class="form-group pull-right">
                 <input type="search" placeholder="Search" class="form-control" v-model="search">
             </div>
@@ -23,17 +24,20 @@
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" v-bind:value="token">
                             <a v-if="detail" v-bind:href="detail">| Detail </a>
-                            <a v-if="edit" v-bind:href="edit">| Edit</a> 
+                            <a v-if="edit && !modal" v-bind:href="edit">| Edit</a> 
+                            <modal-link-component v-if="edit && modal" v-bind:item="item" type="link" name="edit" title="| Edit" css=""></modal-link-component>
                             <a v-on:click="executeForm(index)">| Delete |</a>
                         </form>
                         <span v-if="!token">
                             <a v-if="detail" v-bind:href="detail">| Detail </a>
-                            <a v-if="edit" v-bind:href="edit">| Edit </a> 
+                            <a v-if="edit && !modal" v-bind:href="edit">| Edit</a> 
+                            <modal-link-component v-if="edit && modal" v-bind:item="item"  type="link" name="edit" title="| Edit" css=""></modal-link-component>
                             <a v-if="deleted" v-bind:href="deleted">| Delete |</a>
                         </span>
                         <span v-if="token && !deleted">
                             <a v-if="detail" v-bind:href="detail">| Detail </a>
-                            <a v-if="edit" v-bind:href="edit">| Edit |</a> 
+                            <a v-if="edit && !modal" v-bind:href="edit">| Edit |</a> 
+                            <modal-link-component v-if="edit && modal" v-bind:item="item"  type="link" name="edit" title="| Edit |" css=""></modal-link-component>
                         </span>
                     </td>
                 </tr>
@@ -44,7 +48,7 @@
 
 <script>
     export default {
-        props:['titles', 'items', 'order', 'orderCol', 'create', 'detail', 'edit', 'deleted', 'token'],
+        props:['titles', 'items', 'order', 'orderCol', 'create', 'detail', 'edit', 'deleted', 'token', 'modal'],
         data: function(){
             return {
                 search: '',
@@ -76,9 +80,9 @@
 
                 if(order == 'asc'){
                     this.items.sort(function(a,b){
-                        if (a[orderCol] > b[orderCol]){
+                        if (Object.values(a)[orderCol] > Object.values(b)[orderCol]){
                             return 1;
-                        } else if (a[orderCol] < b[orderCol]){
+                        } else if (Object.values(a)[orderCol] < Object.values(b)[orderCol]){
                             return -1;
                         } else {
                             return 0;
@@ -86,9 +90,9 @@
                     });
                 } else {
                     this.items.sort(function(a,b){
-                        if (a[orderCol] < b[orderCol]){
+                        if (Object.values(a)[orderCol] < Object.values(b)[orderCol]){
                             return 1;
-                        } else if (a[orderCol] > b[orderCol]){
+                        } else if (Object.values(a)[orderCol] > Object.values(b)[orderCol]){
                             return -1;
                         } else {
                             return 0;
@@ -96,15 +100,16 @@
                     });
                 }
 
-                return this.items.filter(res => {
-                    for(let k = 0; k<res.length; k++){
-                        if((res[k]+ "").toLowerCase().indexOf(this.search.toLowerCase()) >= 0){
-                            return true;
+                if (this.search){
+                    return this.items.filter(res => {
+                        for(let k = 0; k<res.length; k++){
+                            if((res[k]+ "").toLowerCase().indexOf(this.search.toLowerCase()) >= 0){
+                                return true;
+                            }
                         }
-                    }
-                    return false;
-                });
-
+                        return false;
+                    });
+                }
 
                 return this.items;
             }
