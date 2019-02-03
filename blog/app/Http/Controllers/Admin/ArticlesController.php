@@ -68,7 +68,7 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        //
+        return Article::find($id);
     }
 
     /**

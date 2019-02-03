@@ -20,7 +20,7 @@
                 v-bind:titles="['#','Title', 'Description', 'Date']"
                 v-bind:items="{{$listArticles}}"
                 order ="asc" orderCol="1"
-                create="#create"  detail="#detail" edit="#edit" deleted="#deleted" token="7878797987"
+                create="#create"  detail="/admin/articles/" edit="#edit" deleted="#deleted" token="7878797987"
                 modal="yes"
             ></table-list-component>
         </panel-component>
@@ -68,5 +68,7 @@
     
     <modal-component name="detail" v-bind:title="$store.state.item.title">
         <p>@{{$store.state.item.description}}</p>
+        <p>@{{$store.state.item.content}}</p>
+        <p>@{{$store.state.item.date}}</p>
     </modal-component>
 @endsection
