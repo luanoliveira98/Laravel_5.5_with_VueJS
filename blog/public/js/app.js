@@ -991,6 +991,7 @@ Vue.component('top-component', __webpack_require__(53));
 Vue.component('panel-component', __webpack_require__(56));
 Vue.component('box-component', __webpack_require__(63));
 Vue.component('page-component', __webpack_require__(68));
+Vue.component('table-list-component', __webpack_require__(71));
 
 var app = new Vue({
   el: '#app'
@@ -44268,6 +44269,244 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-1cb123c6", module.exports)
+  }
+}
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(39)
+/* script */
+var __vue_script__ = __webpack_require__(72)
+/* template */
+var __vue_template__ = __webpack_require__(73)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/TableList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2857e365", Component.options)
+  } else {
+    hotAPI.reload("data-v-2857e365", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['titles']
+});
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("a", { attrs: { href: "#" } }, [_vm._v("Create")]),
+    _vm._v(" "),
+    _c("table", { staticClass: "table table-striped table-hover" }, [
+      _c("thead", [
+        _c(
+          "tr",
+          [
+            _vm._l(_vm.titles, function(title) {
+              return _c("th", [_vm._v(_vm._s(title))])
+            }),
+            _vm._v(" "),
+            _c("th", [_vm._v("Action")])
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tbody", [
+      _c("tr", [
+        _c("td", [_vm._v("1")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Title...")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Description...")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Author...")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Date...")]),
+        _vm._v(" "),
+        _c("td", [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Edit")]),
+          _vm._v(" | \n                    "),
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("1")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Title...")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Description...")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Author...")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Date...")]),
+        _vm._v(" "),
+        _c("td", [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Edit")]),
+          _vm._v(" | \n                    "),
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("1")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Title...")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Description...")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Author...")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Date...")]),
+        _vm._v(" "),
+        _c("td", [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Edit")]),
+          _vm._v(" | \n                    "),
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("1")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Title...")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Description...")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Author...")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Date...")]),
+        _vm._v(" "),
+        _c("td", [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Edit")]),
+          _vm._v(" | \n                    "),
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Delete")])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2857e365", module.exports)
   }
 }
 
