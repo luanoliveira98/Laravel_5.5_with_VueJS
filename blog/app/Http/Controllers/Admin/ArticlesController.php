@@ -19,9 +19,10 @@ class ArticlesController extends Controller
         $listCrumbs = json_encode([
             ["title"=>"Home", "url"=>route('home')],
             ["title"=>"Articles List", "url"=>""]
-        ]);
+        ]);        
+        
+        $listModel = Article::list(10);
 
-        $listModel = Article::select('id', 'title', 'description' ,'user_id', 'date')->paginate(10);
         return view('admin.articles.index', compact('listCrumbs', 'listModel'));
     }
 
