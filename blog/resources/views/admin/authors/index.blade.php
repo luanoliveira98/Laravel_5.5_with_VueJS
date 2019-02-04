@@ -14,13 +14,13 @@
             </div>
         @endif
 
-        <panel-component title="Users List">
+        <panel-component title="Authors List">
             <crumbs-component v-bind:list="{{$listCrumbs}}"></crumbs-component>
             <table-list-component 
                 v-bind:titles="['#','Name', 'E-mail']"
                 v-bind:items="{{json_encode($listModel)}}"
                 order ="asc" orderCol="1"
-                create="#create"  detail="/admin/users/" edit="/admin/users/" deleted="/admin/users/" token="{{ csrf_token() }}"
+                create="#create"  detail="/admin/authors/" edit="/admin/authors/"
                 modal="yes"
             ></table-list-component>
             <div align="center">
@@ -30,7 +30,7 @@
     </page-component>
 
     <modal-component name="add" title="Add">
-        <form-component id="formAdd" css="" action="{{route('users.store')}}" method="post" enctype="" token="{{ csrf_token() }}">
+        <form-component id="formAdd" css="" action="{{route('authors.store')}}" method="post" enctype="" token="{{ csrf_token() }}">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{old('name')}}">
@@ -43,7 +43,7 @@
                 <label for="author">Author</label>
                 <select name="author" id="author" class="form-control">
                     <option value="N" {{(old('author') && old('author') == 'N' ? 'selected' : '')}}>No</option>
-                    <option value="S" {{(old('author') && old('author') == 'S' ? 'selected' : '')}}>Yes</option>
+                    <option value="S" {{(old('author') && old('author') == 'S' ? 'selected' : '')}} {{(!old('author') ? 'selected' : '')}}>Yes</option>
                 </select>
             </div>
             <div class="form-group">
@@ -57,7 +57,7 @@
     </modal-component>
     
     <modal-component name="edit" title="Edit">
-        <form-component id="formEdit" css="" v-bind:action="'/admin/users/'+$store.state.item.id" method="put" enctype="" token="{{ csrf_token() }}">
+        <form-component id="formEdit" css="" v-bind:action="'/admin/authors/'+$store.state.item.id" method="put" enctype="" token="{{ csrf_token() }}">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" v-model="$store.state.item.name" class="form-control" placeholder="Name">

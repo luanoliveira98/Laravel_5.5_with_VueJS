@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+use App\Article;
+
 class HomeController extends Controller
 {
     /**
@@ -26,6 +29,12 @@ class HomeController extends Controller
         $listCrumbs = json_encode([
             ["title"=>"Home", "url"=>""]
         ]);
-        return view('home', compact('listCrumbs'));
+        $countTables = [
+            "articles" => Article::count(), 
+            "users"    => User::count(),
+            "authors"  => User::where('author','S')->count(),
+        ];
+
+        return view('home', compact('listCrumbs', 'countTables'));
     }
 }

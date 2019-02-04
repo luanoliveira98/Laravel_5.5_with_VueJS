@@ -27,19 +27,19 @@
                             <a v-if="detail && !modal" v-bind:href="detail">| Detail </a> 
                             <modal-link-component v-if="detail && modal" v-bind:url="detail" v-bind:item="item" type="link" name="detail" title="| Detail" css=""></modal-link-component> 
                             
-                            <a v-if="edit && !modal" v-bind:href="edit">| Edit</a> 
-                            <modal-link-component v-if="edit && modal" v-bind:url="edit" v-bind:item="item" type="link" name="edit" title="| Edit" css=""></modal-link-component>
+                            <a v-if="edit && !modal" v-bind:href="edit">| Edit |</a> 
+                            <modal-link-component v-if="edit && modal" v-bind:url="edit" v-bind:item="item" type="link" name="edit" title="| Edit |" css=""></modal-link-component>
                             
-                            <a v-on:click="executeForm(index)">| Delete |</a>
+                            <a v-on:click="executeForm(index)"> Delete |</a>
                         </form>
                         <span v-if="!token">
                             <a v-if="detail && !modal" v-bind:href="detail">| Detail </a> 
                             <modal-link-component v-if="detail && modal" v-bind:url="detail" v-bind:item="item" type="link" name="detail" title="| Detail" css=""></modal-link-component>
                             
-                            <a v-if="edit && !modal" v-bind:href="edit">| Edit</a> 
-                            <modal-link-component v-if="edit && modal" v-bind:url="edit" v-bind:item="item"  type="link" name="edit" title="| Edit" css=""></modal-link-component>
+                            <a v-if="edit && !modal" v-bind:href="edit">| Edit |</a> 
+                            <modal-link-component v-if="edit && modal" v-bind:url="edit" v-bind:item="item"  type="link" name="edit" title="| Edit |" css=""></modal-link-component>
                             
-                            <a v-if="deleted" v-bind:href="deleted">| Delete |</a>
+                            <a v-if="deleted" v-bind:href="deleted">Delete |</a>
                         </span>
                         <span v-if="token && !deleted">
                             <a v-if="detail && !modal" v-bind:href="detail">| Detail </a> 

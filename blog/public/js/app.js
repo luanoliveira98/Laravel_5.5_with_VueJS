@@ -44615,7 +44615,7 @@ var render = function() {
                             _vm._v(" "),
                             _vm.edit && !_vm.modal
                               ? _c("a", { attrs: { href: _vm.edit } }, [
-                                  _vm._v("| Edit")
+                                  _vm._v("| Edit |")
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
@@ -44626,7 +44626,7 @@ var render = function() {
                                     item: item,
                                     type: "link",
                                     name: "edit",
-                                    title: "| Edit",
+                                    title: "| Edit |",
                                     css: ""
                                   }
                                 })
@@ -44641,7 +44641,7 @@ var render = function() {
                                   }
                                 }
                               },
-                              [_vm._v("| Delete |")]
+                              [_vm._v(" Delete |")]
                             )
                           ],
                           1
@@ -44673,7 +44673,7 @@ var render = function() {
                             _vm._v(" "),
                             _vm.edit && !_vm.modal
                               ? _c("a", { attrs: { href: _vm.edit } }, [
-                                  _vm._v("| Edit")
+                                  _vm._v("| Edit |")
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
@@ -44684,7 +44684,7 @@ var render = function() {
                                     item: item,
                                     type: "link",
                                     name: "edit",
-                                    title: "| Edit",
+                                    title: "| Edit |",
                                     css: ""
                                   }
                                 })
@@ -44692,7 +44692,7 @@ var render = function() {
                             _vm._v(" "),
                             _vm.deleted
                               ? _c("a", { attrs: { href: _vm.deleted } }, [
-                                  _vm._v("| Delete |")
+                                  _vm._v("Delete |")
                                 ])
                               : _vm._e()
                           ],
