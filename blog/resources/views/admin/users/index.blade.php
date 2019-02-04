@@ -61,7 +61,7 @@
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" v-model="$store.state.item.password" class="form-control" value="{{old('password')}}">
+                <input type="password" name="password" id="password" class="form-control">
             </div>
         </form-component>
         <span slot="buttons">
