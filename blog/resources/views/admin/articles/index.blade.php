@@ -17,7 +17,7 @@
         <panel-component title="Articles List">
             <crumbs-component v-bind:list="{{$listCrumbs}}"></crumbs-component>
             <table-list-component 
-                v-bind:titles="['#','Title', 'Description', 'Date']"
+                v-bind:titles="['#','Title', 'Description', 'Author', 'Date']"
                 v-bind:items="{{json_encode($listModel)}}"
                 order ="asc" orderCol="1"
                 create="#create"  detail="/admin/articles/" edit="/admin/articles/" deleted="/admin/articles/" token="{{ csrf_token() }}"
