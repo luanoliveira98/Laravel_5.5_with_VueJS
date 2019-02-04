@@ -12,7 +12,7 @@
                 </div>
                 
                 <div class="col-md-4">
-                    <box-component quantify="1500" title="Users" url="#" color="blue" icon="ion ion-person-stalker">
+                    <box-component quantify="1500" title="Users" url="{{route('users.index')}}" color="blue" icon="ion ion-person-stalker">
 
                     </box-component>
                 </div>
