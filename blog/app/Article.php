@@ -20,20 +20,47 @@ class Article extends Model
     }
 
     public static function list($paginate){
-        return  DB::table('articles')
+
+        $user = auth()->user();
+
+        if($user->admin == "S"){
+            return  DB::table('articles')
                     ->join('users','users.id','articles.user_id')
                     ->select('articles.id', 'articles.title', 'articles.description' ,'users.name', 'articles.date')
                     ->whereNull('deleted_at')
-                    ->paginate($paginate);        
+                    ->orderBy('articles.id', 'desc')
+                    ->paginate($paginate); 
+        }
+            return  DB::table('articles')
+                    ->join('users','users.id','articles.user_id')
+                    ->select('articles.id', 'articles.title', 'articles.description' ,'users.name', 'articles.date')
+                    ->whereNull('deleted_at')
+                    ->where('articles.user_id', $user->id)
+                    ->orderBy('articles.id', 'desc')
+                    ->paginate($paginate); 
     }
 
-    public static function listSite($paginate){
-        return  DB::table('articles')
+    public static function listSite($paginate, $search = null){
+        if($search){
+            return  DB::table('articles')
+                    ->join('users','users.id','articles.user_id')
+                    ->select('articles.id', 'articles.title', 'articles.description' ,'users.name as author', 'articles.date')
+                    ->whereNull('deleted_at')
+                    ->whereDate('date', '<=', date('Y-m-d'))
+                    ->where(function($query) use ($search){
+                        $query->orWhere('title', 'like', '%'.$search.'%')
+                              ->orWhere('description', 'like', '%'.$search.'%');
+                    })
+                    ->orderBy('date', 'desc')
+                    ->paginate($paginate);
+        } else {
+            return  DB::table('articles')
                     ->join('users','users.id','articles.user_id')
                     ->select('articles.id', 'articles.title', 'articles.description' ,'users.name as author', 'articles.date')
                     ->whereNull('deleted_at')
                     ->whereDate('date', '<=', date('Y-m-d'))
                     ->orderBy('date', 'desc')
-                    ->paginate($paginate);        
+                    ->paginate($paginate);
+        }    
     }
 }

@@ -56,8 +56,8 @@ class ArticlesController extends Controller
             return redirect()->back()->withErrors($validation)->withInput();
         }
 
-        
-        Article::create($data);
+        $user = auth()->user();
+        $user->articles()->create($data);
         return redirect()->back();
     }
 
@@ -104,8 +104,8 @@ class ArticlesController extends Controller
             return redirect()->back()->withErrors($validation);
         }
 
-        
-        Article::find($id)->update($data);
+        $user = auth()->user();
+        $user->articles()->find($id)->update($data);
         return redirect()->back();
     }
 
