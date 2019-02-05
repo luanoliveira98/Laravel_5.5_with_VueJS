@@ -28,6 +28,9 @@
 
                     <ul class="dropdown-menu">
                         <li>
+                            <a href="{{route('admin')}}">Admin</a>
+                        </li>
+                        <li>
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
@@ -47,6 +50,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/vue-ckeditor2"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

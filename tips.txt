@@ -21,3 +21,8 @@ laravel-5.5-pt-BR-localization:
     Framework configuration for use Default language:
     // Line 81 from file config/app.php
     'locale' => 'pt-BR',
+
+CKEditor:
+    https://github.com/dangvanthanh/vue-ckeditor2
+    https://github.com/dangvanthanh/vue-ckeditor2/wiki/Getting-Started
+    npm install vue-ckeditor2 --save

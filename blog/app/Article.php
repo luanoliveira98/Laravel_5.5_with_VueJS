@@ -26,4 +26,14 @@ class Article extends Model
                     ->whereNull('deleted_at')
                     ->paginate($paginate);        
     }
+
+    public static function listSite($paginate){
+        return  DB::table('articles')
+                    ->join('users','users.id','articles.user_id')
+                    ->select('articles.id', 'articles.title', 'articles.description' ,'users.name as author', 'articles.date')
+                    ->whereNull('deleted_at')
+                    ->whereDate('date', '<=', date('Y-m-d'))
+                    ->orderBy('date', 'desc')
+                    ->paginate($paginate);        
+    }
 }

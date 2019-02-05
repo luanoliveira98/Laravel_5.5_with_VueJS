@@ -17,7 +17,7 @@ class UsersController extends Controller
     public function index()
     {
         $listCrumbs = json_encode([
-            ["title"=>"Home", "url"=>route('home')],
+            ["title"=>"Admin", "url"=>route('admin')],
             ["title"=>"Users List", "url"=>""]
         ]);
 
