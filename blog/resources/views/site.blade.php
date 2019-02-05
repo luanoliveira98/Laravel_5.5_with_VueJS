@@ -8,7 +8,7 @@
                     <article-card-component
                         title="{{$article->title}}"
                         description="{{$article->description}}"
-                        link="#"
+                        link="{{route('article',[$article->id, str_slug($article->title)])}}"
                         image="https://coletiva.net/files/e4da3b7fbbce2345d7772b0674a318d5/midia_foto/20170713/118815-maior_artigo_jul17.jpg"
                         date="{{$article->date}}"
                         author="{{$article->author}}"
