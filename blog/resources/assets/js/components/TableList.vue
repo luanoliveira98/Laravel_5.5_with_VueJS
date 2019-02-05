@@ -18,7 +18,7 @@
             </thead>
             <tbody>
                 <tr v-for="(item, index) in list" :key="item.index">
-                    <td v-for="i in item" :key="i.index">{{i}}</td>
+                    <td v-for="i in item" :key="i.index">{{i | dateFormat}}</td>
                     <td v-if="detail || edit || deleted">
                         <form v-bind:id="index" v-if="deleted && token" v-bind:action="deleted + item.id" method="post">
                             <input type="hidden" name="_method" value="DELETE">
@@ -76,6 +76,17 @@
                 } else {
                     this.orderAux = "asc";
                 }
+            }
+        },
+        filters:{
+            dateFormat: function(value){
+                if(!value) return '';
+                value = value.toString();
+                if(value.split('-').length == 3){
+                    value = value.split('-');
+                    return value[2] + '/' + value[1] + '/' + value[0];
+                }
+                return value;
             }
         },
         computed:{

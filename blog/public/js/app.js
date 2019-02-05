@@ -45427,6 +45427,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         }
     },
+    filters: {
+        dateFormat: function dateFormat(value) {
+            if (!value) return '';
+            value = value.toString();
+            if (value.split('-').length == 3) {
+                value = value.split('-');
+                return value[2] + '/' + value[1] + '/' + value[0];
+            }
+            return value;
+        }
+    },
     computed: {
         list: function list() {
             var _this = this;
@@ -45564,7 +45575,9 @@ var render = function() {
             { key: item.index },
             [
               _vm._l(item, function(i) {
-                return _c("td", { key: i.index }, [_vm._v(_vm._s(i))])
+                return _c("td", { key: i.index }, [
+                  _vm._v(_vm._s(_vm._f("dateFormat")(i)))
+                ])
               }),
               _vm._v(" "),
               _vm.detail || _vm.edit || _vm.deleted
@@ -46464,7 +46477,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['title', 'description', 'link', 'image', 'date', 'author', 'sm', 'md']
+    props: ['title', 'description', 'link', 'image', 'date', 'author', 'sm', 'md'],
+    filters: {
+        dateFormat: function dateFormat(value) {
+            if (!value) return '';
+            value = value.toString();
+            value = value.split('-');
+            return value[2] + '/' + value[1] + '/' + value[0];
+        }
+    }
 });
 
 /***/ }),
@@ -46483,7 +46504,13 @@ var render = function() {
         _c("img", { attrs: { src: _vm.image, alt: "..." } }),
         _vm._v(" "),
         _c("div", { staticClass: "caption" }, [
-          _c("small", [_vm._v(_vm._s(_vm.date) + " - " + _vm._s(_vm.author))]),
+          _c("small", [
+            _vm._v(
+              _vm._s(_vm._f("dateFormat")(_vm.date)) +
+                " - " +
+                _vm._s(_vm.author)
+            )
+          ]),
           _vm._v(" "),
           _c("h3", [_vm._v(_vm._s(_vm.title))]),
           _vm._v(" "),
