@@ -14,13 +14,13 @@
             </div>
         @endif
 
-        <panel-component title="Users List">
+        <panel-component title="Admins List">
             <crumbs-component v-bind:list="{{$listCrumbs}}"></crumbs-component>
             <table-list-component 
                 v-bind:titles="['#','Name', 'E-mail']"
                 v-bind:items="{{json_encode($listModel)}}"
                 order ="asc" orderCol="1"
-                create="#create"  detail="/admin/users/" edit="/admin/users/" deleted="/admin/users/" token="{{ csrf_token() }}"
+                create="#create"  detail="/admin/adm/" edit="/admin/adm/"
                 modal="yes"
             ></table-list-component>
             <div align="center">
@@ -30,7 +30,7 @@
     </page-component>
 
     <modal-component name="add" title="Add">
-        <form-component id="formAdd" css="" action="{{route('users.store')}}" method="post" enctype="" token="{{ csrf_token() }}">
+        <form-component id="formAdd" css="" action="{{route('adm.store')}}" method="post" enctype="" token="{{ csrf_token() }}">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{old('name')}}">
@@ -40,17 +40,10 @@
                 <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" value="{{old('email')}}">
             </div>
             <div class="form-group">
-                <label for="author">Author</label>
-                <select name="author" id="author" class="form-control">
-                    <option value="N" {{(old('author') && old('author') == 'N' ? 'selected' : '')}}>No</option>
-                    <option value="S" {{(old('author') && old('author') == 'S' ? 'selected' : '')}}>Yes</option>
-                </select>
-            </div>
-            <div class="form-group">
                 <label for="admin">Admin</label>
                 <select name="admin" id="admin" class="form-control">
                     <option value="N" {{(old('admin') && old('admin') == 'N' ? 'selected' : '')}}>No</option>
-                    <option value="S" {{(old('admin') && old('admin') == 'S' ? 'selected' : '')}}>Yes</option>
+                    <option value="S" {{(old('admin') && old('admin') == 'S' ? 'selected' : '')}} {{(!old('admin') ? 'selected' : '')}}>Yes</option>
                 </select>
             </div>
             <div class="form-group">
@@ -64,7 +57,7 @@
     </modal-component>
     
     <modal-component name="edit" title="Edit">
-        <form-component id="formEdit" css="" v-bind:action="'/admin/users/'+$store.state.item.id" method="put" enctype="" token="{{ csrf_token() }}">
+        <form-component id="formEdit" css="" v-bind:action="'/admin/adm/'+$store.state.item.id" method="put" enctype="" token="{{ csrf_token() }}">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" v-model="$store.state.item.name" class="form-control" placeholder="Name">
@@ -72,13 +65,6 @@
             <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="text" name="email" id="email" v-model="$store.state.item.email" class="form-control" placeholder="E-mail">
-            </div>
-            <div class="form-group">
-                <label for="author">Author</label>
-                <select name="author" id="author" class="form-control" v-model="$store.state.item.author" >
-                    <option value="N">No</option>
-                    <option value="S">Yes</option>
-                </select>
             </div>
             <div class="form-group">
                 <label for="admin">Admin</label>

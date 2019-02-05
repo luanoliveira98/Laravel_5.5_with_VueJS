@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAuthorTableUsers extends Migration
+class AddAdminTableUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddAuthorTableUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('author', ['N', 'S'])->default('N');
+            $table->enum('admin', ['N', 'S'])->default('N');
         });
     }
 
@@ -26,7 +26,7 @@ class AddAuthorTableUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('author');
+            $table->dropColumn('admin');
         });
     }
 }

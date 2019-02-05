@@ -17,9 +17,14 @@
                     </box-component>
                 </div>
 
-                    
                 <div class="col-md-4">
                     <box-component quantify="{{$countTables['authors']}}" title="Authors" url="{{route('authors.index')}}" color="red" icon="ion ion-person">
+
+                    </box-component>
+                </div>
+
+                <div class="col-md-4">
+                    <box-component quantify="{{$countTables['admins']}}" title="Admins" url="{{route('adm.index')}}" color="green" icon="ion ion-person">
 
                     </box-component>
                 </div>

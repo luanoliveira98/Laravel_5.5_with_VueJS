@@ -33,6 +33,7 @@ class AdminController extends Controller
             "articles" => Article::count(), 
             "users"    => User::count(),
             "authors"  => User::where('author','S')->count(),
+            "admins"  => User::where('admin','S')->count()
         ];
 
         return view('admin', compact('listCrumbs', 'countTables'));
